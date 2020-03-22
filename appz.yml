@@ -1,33 +1,34 @@
 app:
-    name: Vault
-    code: VAULT
+    name: Vault-UA
+    code: VAULT-UA
     notify: appzdev@cloudbourne.co
   
 build:
     version: 0.4
-    env: DEV
+    env: UA
     build_file: none
     output_files: output/*.zip
     image_template: vault-1.2
-    image_name: myco/vault
+    image_name: myco/vault-ua
   
 deploy:
-    context: myco/DEV
+    context: myco/UA
     replicas: 1
     port:
     - 80
     - 8200
   
 volumes:
-  - claim: vault-home
+  - claim: vault-home-ua
     mount: /appz/home
-    name: home
-  - claim: vault-data
+    name: home-ua
+  - claim: vault-data-ua
     mount: /appz/data
-    name: data
+    name: data-ua
     
 monitor:
-    notify: appzops@cloudbourne.co      
+    notify: appzdev@cloudbourne.co      
   
 properties:
-    revision : 01
+    revision : 10
+
